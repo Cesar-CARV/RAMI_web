@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/page-controler.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/responsi.css">
+    <title>RAMI Characters</title>
+
+</head>
+<body>
+
+    <header>
+        <nav class="flex-nav" id="nav">
+            <div>
+                <div class="menu-button">
+                    <div class="icon-menu"></div>
+                </div>
+                <div class="menu-logo">
+                    <a href="index.html">RAMI</a>
+                </div>
+            </div>
+            <div>
+                <a href="about.html">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="banner" id="banner">
+        <div>
+            <div class="banner-title">Characters</div>
+            <div class="banner-sub-title">Of Rick And Morty</div>
+        </div>
+    </div>
+
+     <div class="left-menu">
+        <div class="left_menu__items-container">
+            <ul>
+                <li>
+                    <a href="index.html" title="Home" class="item-container__item"><i class="icon-home"></i></a>
+                </li>
+                <li>
+                    <a href="characters.html" title="Characters" class="item-container__item"><i class="icon-character"></i></a>
+                </li>
+                <li>
+                    <a href="episodes.html" title="Episodes" class="item-container__item"><i class="icon-episode"></i></a>
+                </li>
+                <li>
+                    <a href="locations.html" title="Locations" class="item-container__item"><i class="icon-location"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-api">
+        <h4 class="info-api__title">All characters</h4>
+        <p class="info-api__info">characters: 0</p>
+    </div>
+
+    <div class="flex-container characters-container">
+        <div class="icon-load"></div>
+    </div>
+
+    <div class="page-controler">
+        <div class="controls">
+            <input type="button" value="<" class="back-button button-off">
+            <p class="page-num">0</p>
+            <input type="button" value=">" class="next-button button-off">
+        </div>
+    </div>
+
+    <div class="modal-container">
+        <div class="modal">
+            <div class="icon-load"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>Date: 16/12/2020</p>
+                <h4>API used:</h4>
+                <a href="https://rickandmortyapi.com/api" target="_blank">https://rickandmortyapi.com/api</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api_global_methods.js"></script>
+    <script src="js/characters.js"></script>
+
+    <script type="text/javascript">
+        var paramstr = window.location.search.substr(1);
+        var paramarr = paramstr.split ("&");
+        var params = {};
+        
+        for ( var i = 0; i < paramarr.length; i++) {
+            var tmparr = paramarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+        if (params['url']) {
+           console.log('El valor del parámetro variable es: '+ params['url']);
+           let modal = document.querySelector(".modal-container");
+            modal.style.display = "flex";
+            createModal(params["url"]);
+        } else {
+           console.log('No se envió el parámetro variable');
+        }
+    </script>
+
+</body>
+</html>
